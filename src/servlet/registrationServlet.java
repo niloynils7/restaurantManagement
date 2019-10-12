@@ -28,6 +28,7 @@ public class registrationServlet extends HttpServlet {
         {
             registrationDao obj = new registrationDao();
             try {
+                System.out.println(obj.check(phone));
                 if(obj.check(phone))
                 {
                     try {

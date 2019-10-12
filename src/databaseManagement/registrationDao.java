@@ -38,7 +38,7 @@ public class registrationDao {
     }
 
     public boolean check(String phone) {
-        String query = "select count(*) from registration where phone=?";
+        String query = "select email from registration where phone=?";
         boolean f = false;
         try {
             Statement statement = connection.createStatement();
@@ -48,14 +48,41 @@ public class registrationDao {
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
+                System.out.println("aise");
                 f = false;
             } else
+            {
+                System.out.println("else e aise");
                 f = true;
+            }
+
 
         } catch (SQLException e) {
             System.out.println("false ashcche");
             e.printStackTrace();
         }
         return f;
+    }
+
+    public boolean login_check(String phone, String pass) throws SQLException {
+        String query = "select * from registration where phone=? and password=?";
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, phone);
+            statement.setString(2, pass);
+
+            ResultSet res = statement.executeQuery();
+
+            if(res.next())
+            {
+                return true;
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }

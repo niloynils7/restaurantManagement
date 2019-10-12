@@ -17,9 +17,9 @@
 				<h3 class="heading"> Login Form</h3>
 				<br></br>
 
-				<form method="POST" action="">
+				<form method="POST" action="loginServlet">
 				
-				<input type="text" name="username" placeholder="Username">
+				<input type="text" name="phonenumber" placeholder="Phone number">
 				<input type="Password" name="pass" placeholder="Password">
 				<input type="submit" value="Login" name="login" class="lg-btn">
 				</form>
