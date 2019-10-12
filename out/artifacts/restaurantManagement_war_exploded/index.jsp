@@ -21,13 +21,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-	<%
-		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-		if(session.getAttribute("phonenumber")==null)
-		{
-			response.sendRedirect("login.jsp");
-		}
-	%>
+<%--	<%--%>
+<%--		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");--%>
+<%--		if(session.getAttribute("phonenumber")==null)--%>
+<%--		{--%>
+<%--			response.sendRedirect("login.jsp");--%>
+<%--		}--%>
+<%--	%>--%>
 
 		<section class="header">
 		  <nav class="navbar navbar-default">

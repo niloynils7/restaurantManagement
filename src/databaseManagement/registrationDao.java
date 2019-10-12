@@ -19,7 +19,7 @@ public class registrationDao {
         int res = 0;
         try {
             Statement statement = connection.createStatement();
-            String query = "INSERT INTO registration(phone, firstname, lastname, address, email, password) VALUES(?,?,?,?,?,?)";
+            String query = "INSERT INTO user(phone, firstname, lastname, address, email, password) VALUES(?,?,?,?,?,?)";
             try (PreparedStatement myPreparedStatement = connection.prepareStatement(query)) {
                 myPreparedStatement.setString(1, phone);
                 myPreparedStatement.setString(2, firstname);
@@ -38,7 +38,7 @@ public class registrationDao {
     }
 
     public boolean check(String phone) {
-        String query = "select email from registration where phone=?";
+        String query = "select email from user where phone=?";
         boolean f = false;
         try {
             Statement statement = connection.createStatement();
@@ -65,7 +65,7 @@ public class registrationDao {
     }
 
     public boolean login_check(String phone, String pass) throws SQLException {
-        String query = "select * from registration where phone=? and password=?";
+        String query = "select * from user where phone=? and password=?";
         try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, phone);
