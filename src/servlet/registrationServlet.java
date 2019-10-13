@@ -33,6 +33,7 @@ public class registrationServlet extends HttpServlet {
                 {
                     try {
                         obj.reg_insert(phone, firstname, lastname,address,  email, password);
+                        response.sendRedirect("login.jsp");
                     } catch (SQLException e) {
                         System.out.println("reg_insert e jay nai");
                     }

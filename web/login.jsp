@@ -24,7 +24,7 @@
 				<input type="submit" value="Login" name="login" class="lg-btn">
 				</form>
 				<br>
-				<p class="text-white"> Don't have account? <a href="">Click Here</a></p>
+				<p class="text-white"> Don't have account? <a href="registration.jsp">Click Here</a></p>
 
 			</div>
 

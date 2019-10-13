@@ -11,15 +11,17 @@ import java.io.IOException;
 @WebServlet("/logoutServlet")
 public class logoutServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        session.removeAttribute("phonenumber");
-        session.invalidate();
-        //jekhane pathaite chai. means here it will be Home.jsp
-        //response.sendRedirect("");
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+        session.removeAttribute("phonenumber");
+        session.invalidate();
+        System.out.println("logout hoise");
+        //jekhane pathaite chai. means here it will be Home.jsp
+        response.sendRedirect("index.html");
 
     }
 }

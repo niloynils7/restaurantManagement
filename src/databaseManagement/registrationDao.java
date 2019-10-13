@@ -64,7 +64,7 @@ public class registrationDao {
         return f;
     }
 
-    public boolean login_check(String phone, String pass) throws SQLException {
+    public ResultSet login_check(String phone, String pass) throws SQLException {
         String query = "select * from user where phone=? and password=?";
         try{
             PreparedStatement statement = connection.prepareStatement(query);
@@ -73,16 +73,13 @@ public class registrationDao {
 
             ResultSet res = statement.executeQuery();
 
-            if(res.next())
-            {
-                return true;
-            }
+            return res;
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
 
-        return false;
+        return null;
     }
 }
