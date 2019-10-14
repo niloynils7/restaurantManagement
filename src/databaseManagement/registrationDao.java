@@ -83,31 +83,69 @@ public class registrationDao {
         return null;
     }
 
-    public int order_insert(int food_id, int userid) throws SQLException {
-        String sql = "select count from order where userid=? and foodid=?";
-        int res = 0;
-        int count = 1;
-
+    public void order_insert(int food_id, int userid) throws SQLException {
+        String sql = "select count from foodorder where userid=? and foodid=?";
         try {
-            Statement statement = connection.createStatement();
-            String query = "INSERT INTO foodorder(userid, foodid, count) VALUES (?,?,?)";
-            PreparedStatement st = connection.prepareStatement(query);
+            int c= 0;
+            PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, userid);
             st.setInt(2, food_id);
-            st.setInt(3, count);
 
-            res = st.executeUpdate();
+            ResultSet res = st.executeQuery();
+            if(res.next())
+            {
+                c=res.getInt("count");
+                c+=1;
+                String upSQL = "update foodorder set count=? where userid=? and foodid=?";
+                st = connection.prepareStatement(upSQL);
+                st.setInt(1, c);
+                st.setInt(2, userid);
+                st.setInt(3, food_id);
+                st.executeUpdate();
+            }
+            else
+            {
+                int count = 1;
+
+                try {
+                    Statement statement = connection.createStatement();
+                    String query = "INSERT INTO foodorder(userid, foodid, count) VALUES (?,?,?)";
+                    st = connection.prepareStatement(query);
+                    st.setInt(1, userid);
+                    st.setInt(2, food_id);
+                    st.setInt(3, count);
+
+                    st.executeUpdate();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
 
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return res;
 
     }
 
     public ResultSet cartData(int userid)  {
         String query = "select name, price from food where food_id in (select foodid from foodorder where userid=?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(query);
+            st.setInt(1, userid);
+            ResultSet rs = st.executeQuery();
+
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+    public ResultSet countOrder(int userid)  {
+        String query = "select count from foodorder where userid=?";
         try {
             PreparedStatement st = connection.prepareStatement(query);
             st.setInt(1, userid);

@@ -37,15 +37,16 @@
 						registrationDao obj = new registrationDao();
 						int userid = (int) session.getAttribute("id");
 						ResultSet rs = obj.cartData(userid);
+						ResultSet rsC = obj.countOrder(userid);
 						PrintWriter n = response.getWriter();
 						int price = 0;
-						while(rs.next())
+						while(rs.next() && rsC.next())
 						{
 							String food = rs.getString("name");
 							int cost = rs.getInt("price");
-
-							n.println("<h1>food: "+food+" price: "+cost+"</h1>");
-							price +=cost;
+							int count = rsC.getInt("count");
+							n.println("<h1>food: "+food+" price: "+cost+" quantity :"+count+"</h1>");
+							price +=cost*count;
 						}
 						//n.println("total cost: "+price);
 						n.println("<h1>Total cost: "+price+"</h1>");
