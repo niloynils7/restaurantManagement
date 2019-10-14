@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+		 pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -40,7 +41,7 @@
 				  <ul class="nav navbar-nav navbar-right">
 					<li><a href="index.html"> Home</a></li>
 					<li><a href="Restaurent.html">Restaurent</a></li>
-					<li><a href="M.html">Menu</a></li>	
+					<li><a href="menu.jsp">Menu</a></li>
 					<li><a href="join.html">Join Our Team </a></li>
 					<li><a href="location.html">Location</a></li>
 					<li class="dropdown">
@@ -86,10 +87,11 @@
 								<li>Thai Noodles</li>
 								<li>Ice Cream</li>
 							</ul>
-							<!-- <form method="POST" action="">
-							<input type="submit" name="c1" class="order-btn" value="Order">
-							</form> -->
-							<button type="button" class="order-btn">Order</a></button>
+							<form method="POST" action="orderServlet">
+
+								<button type="submit" name="set1" class="order-btn">Order</button>>
+
+							</form>
 						</div>
 					</div>
 
@@ -112,10 +114,11 @@
 								<li>Ice Cream</li>
 								<li>Pepsi/Coca Cola/Dew</li>
 							</ul>
-							<!-- <form method="POST" action="">
-							<input type="submit" name="c2" class="order-btn" value="Order">
-							</form> -->
-							<button type="button" class="order-btn">Order</a></button>
+							<form method="POST" action="orderServlet">
+
+								<button type="submit" name="set2" class="order-btn">Order</button>>
+
+							</form>
 							</div>
 					</div>
 
@@ -137,10 +140,12 @@
 								<li>Ice Cream</li>
 								<li>Pepsi/Coca Cola/Dew</li>
 							</ul>
-							<!-- <form method="POST" action="">
-							<input type="submit" name="c3" class="order-btn" value="Order">
-							</form> -->
-							<button type="button" class="order-btn">Order</a></button>
+							<form method="POST" action="orderServlet">
+
+								<button type="submit" name="set3" class="order-btn">Order</button>>
+
+							</form>
+
 						</div>
 					</div>
 				</div>
@@ -155,8 +160,6 @@
 			<section class="pricing-table">
 			<div class="container">
 				<div class="row">
-					
-
 					<div class="col-md-4 pricing-box pricing-details">
 						<div class="pricing-border">
 							<div class="pricing-amount">
@@ -176,10 +179,11 @@
 								
 								<li>Ice Cream</li>
 							</ul>
-							<!-- <form method="POST" action="">
-							<input type="submit" name="c1" class="order-btn" value="Order">
-							</form> -->
-							<button type="button" class="order-btn">Order</a></button>
+							<form method="POST" action="orderServlet">
+
+								<button type="submit" name="set4" class="order-btn">Order</button>>
+							</form>
+
 						</div>
 					</div>
 
@@ -202,10 +206,10 @@
 								<li>Ice Cream</li>
 								<li>Pepsi/Coca Cola/Dew</li>
 							</ul>
-							<!-- <form method="POST" action="">
-							<input type="submit" name="c2" class="order-btn" value="Order">
-							</form> -->
-							<button type="button" class="order-btn">Order</a></button>
+							<form method="POST" action="orderServlet">
+
+								<button type="submit" name="set5" class="order-btn">Order</button>>
+							</form>
 							</div>
 					</div>
 
@@ -227,15 +231,17 @@
 								<li>Ice Cream</li>
 								<li>Drinks for 2 persons</li>
 							</ul>
-							<!-- <form method="POST" action="">
-							<input type="submit" name="c3" class="order-btn" value="Order">
-							</form> -->
-							<button type="button" class="order-btn">Order</a></button>
+							<form method="POST" action="orderServlet">
+
+								<button type="submit" name="set6" class="order-btn">Order</button>>
+
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
+
 
 
 		<section class="footer">

@@ -82,4 +82,42 @@ public class registrationDao {
 
         return null;
     }
+
+    public int order_insert(int food_id, int userid) throws SQLException {
+        String sql = "select count from order where userid=? and foodid=?";
+        int res = 0;
+        int count = 1;
+
+        try {
+            Statement statement = connection.createStatement();
+            String query = "INSERT INTO foodorder(userid, foodid, count) VALUES (?,?,?)";
+            PreparedStatement st = connection.prepareStatement(query);
+            st.setInt(1, userid);
+            st.setInt(2, food_id);
+            st.setInt(3, count);
+
+            res = st.executeUpdate();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
+
+    }
+
+    public ResultSet cartData(int userid)  {
+        String query = "select name, price from food where food_id in (select foodid from foodorder where userid=?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(query);
+            st.setInt(1, userid);
+            ResultSet rs = st.executeQuery();
+
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
 }
